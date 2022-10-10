@@ -2,19 +2,15 @@
 <html lang="en">
 <head>
     <title>@yield('title')</title>
+    <style>
+        .active a {
+            color: red;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-<nav>
-    <ul>
-        <li>
-            <a href="/">Home</a>
-            <a href="/about">About</a>
-            <a href="/portfolio">Portfolio</a>
-            <a href="/contact">Contact</a>
-
-        </li>
-    </ul>
-</nav>
+        @include('partials.nav')
 @yield('content')
 </body>
 </html>
