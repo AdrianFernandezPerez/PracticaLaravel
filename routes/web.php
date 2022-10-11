@@ -2,18 +2,25 @@
 
 use App\Http\Controllers\MessagesController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\ProjectController;
 
 
 
 Route::view('/', 'home')->name('home');
-Route::view('/about', 'about')->name('about');
-Route::view('/contact', 'contact')->name('contact');
+Route::view('/quienes-somos', 'about')->name('about');
+Route::view('/contacto', 'contact')->name('contact');
 //Route::view('/portfolio', 'portfolio', compact('portfolio'))->name('portfolio');
 //Route::get('/portfolio', PortfolioController::class);
 //Route::get('/portfolio', [PortfolioController::class, '__invoke']);
-Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio.index');
-Route::get('/portfolio/{id}', [PortfolioController::class, 'show'])->name('portfolio.show');
+Route::get('/portafolio', [ProjectController::class, 'index'])->name('projects.index');
+Route::get('/portafolio/crear', [ProjectController::class, 'create'])->name('projects.create');
+Route::get('/portafolio/{project}/editar', [ProjectController::class, 'edit'])->name('projects.edit');
+Route::patch('/portafolio/{project}', [ProjectController::class, 'update'])->name('projects.update');
+
+
+Route::post('/portafolio', [ProjectController::class, 'store'])->name('projects.store');
+Route::get('/portafolio/{project}', [ProjectController::class, 'show'])->name('projects.show');
 //Route::get('/portfolio', 'PortfolioController@index')->name('portfolio');
 
-Route::post('contact', [MessagesController::class, 'store']);
+Route::post('contact', [MessagesController::class, 'store'])->name('messages.store');
+
