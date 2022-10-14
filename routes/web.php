@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\MessageController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
 
@@ -9,7 +10,11 @@ use App\Http\Controllers\ProjectController;
 Route::view('/', 'home')->name('home');
 Route::view('/quienes-somos', 'about')->name('about');
 
+Route::resource('portafolio', ProjectController::class)
+    ->names('projects')
+    ->parameters(['portafolio' => 'project']);
 
+/**
 Route::get('/portafolio', [ProjectController::class, 'index'])->name('projects.index');
 Route::get('/portafolio/crear', [ProjectController::class, 'create'])->name('projects.create');
 
@@ -21,7 +26,11 @@ Route::post('/portafolio', [ProjectController::class, 'store'])->name('projects.
 Route::get('/portafolio/{project}', [ProjectController::class, 'show'])->name('projects.show');
 
 Route::delete('/portafolio/{project}',  [ProjectController::class, 'destroy'])->name('projects.destroy');
+*/
 
 Route::view('/contacto', 'contact')->name('contact');
-Route::post('contact', [MessagesController::class, 'store'])->name('messages.store');
+Route::post('contact', [MessageController::class, 'store'])->name('messages.store');
+
+
+Auth::routes(['register' => false]);
 
