@@ -8,11 +8,11 @@ use App\Http\Controllers\ProjectController;
 
 //Ver todas las consultas de la web
 
-
+/**
 DB::listen(function ($query){
    var_dump($query->sql);
 });
-
+*/
 
 
 Route::view('/', 'home')->name('home');
