@@ -34,13 +34,14 @@
                                 @can('delete', $project)
                                     <a class="btn btn-danger" href="#"
                                        onclick="document.getElementById('delete-project').submit()">Eliminar</a>
-
-                                    <form id="delete-project" class="d-none" method="POST" action="{{route('projects.destroy', $project)}}">
-                                        @csrf @method('DELETE')
-                                        <button>Eliminar</button>
-                                    </form>
                                 @endcan
                             </div>
+                            @can('delete', $project)
+                                <form id="delete-project" class="d-none" method="POST" action="{{route('projects.destroy', $project)}}">
+                                    @csrf @method('DELETE')
+                                    <button>Eliminar</button>
+                                </form>
+                            @endcan
                         @endauth
 
                     </div>
