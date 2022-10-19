@@ -12,11 +12,11 @@
         @else
             <h1 class="display-4 mb-0">@lang('Projects')</h1>
         @endisset
-        @auth
+        @can('create-projects')
             <a class="btn btn-primary"
                href="{{ route('projects.create') }}"
             >Crear proyecto</a>
-        @endauth
+        @endcan
     </div>
     <p class="lead text-secondary">Proyectos realizados Lorem ipsum dolor sit amet,
         consectetur adipisicing elit.</p>
@@ -36,7 +36,7 @@
                     </h5>
                     <h6 class="card-subtitle">{{ $project->created_at->format('d/m/Y') }}</h6>
                     <p class="card-text text-truncate">{{ $project->description }}</p>
-                    <div class="d-flex justify-content-between aling-items-center">
+                    <div class="d-flex justify-content-between  aling-items-center">
                         <a href="{{ route('projects.show', $project) }}" class="btn btn-primary btn-sm">Ver más...</a>
                         @if($project->category_id)
                             <a href="{{route('categories.show', $project->category)}}"
