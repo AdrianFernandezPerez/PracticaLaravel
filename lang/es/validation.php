@@ -119,6 +119,7 @@ return [
     'uuid'                 => 'El campo :attribute debe ser un UUID válido.',
     'message'              => 'mensaje',
     'image'                => 'imagen',
+    'category_id'          => 'categoría',
 
 
     /*

@@ -1,9 +1,17 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
+
+//Ver todas las consultas de la web
+
+
+DB::listen(function ($query){
+   var_dump($query->sql);
+});
 
 
 
@@ -13,6 +21,8 @@ Route::view('/quienes-somos', 'about')->name('about');
 Route::resource('portafolio', ProjectController::class)
     ->names('projects')
     ->parameters(['portafolio' => 'project']);
+
+Route::get('categorias/{category}',[CategoryController::class, 'show'])->name('categories.show');
 
 /**
 Route::get('/portafolio', [ProjectController::class, 'index'])->name('projects.index');

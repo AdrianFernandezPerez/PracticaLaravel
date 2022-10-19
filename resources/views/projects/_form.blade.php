@@ -13,6 +13,21 @@
 </div>
 
 <div class="form-group">
+    <label for="category_id">Categoría del proyecto</label>
+    <select
+        name="category_id"
+        id="category_id"
+        class="form-control bg-light shadow-sm border-0">
+        <option value="">Seleccione</option>
+        @foreach($categories as $id => $name)
+            <option value="{{ $id }}"
+                @if($id == old('category_id', $project -> category_id)) selected @endif
+            >{{ $name }}</option>
+        @endforeach
+    </select>
+</div>
+
+<div class="form-group">
 <label for="title">
     Título del proyecto <br>
     <input class="form-control bg-light shadow-sm border-0"
